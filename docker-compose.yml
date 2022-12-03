@@ -1,0 +1,31 @@
+version: "3"
+
+networks:
+  my-net:
+    external: true
+
+services:
+  homepage-front:
+    image: homepage-front
+    container_name: homepage-front-container
+    build:
+      context: ./colby_front
+      dockerfile: Dockerfile
+      args:
+        - PROJECTS_URL=https://projects.birkheadc.me
+        - BLOG_URL=https://blog.birkheadc.me
+    environment:
+      - NODE_ENV=production
+    networks:
+      - my-net
+  
+  homepage-reverse-proxy:
+    image: homepage-reverse-proxy
+    container_name: homepage-reverse-proxy-container
+    build:
+      context: ./colby_reverse_proxy
+      dockerfile: Dockerfile
+    depends_on:
+      - homepage-front
+    networks:
+      - my-net
