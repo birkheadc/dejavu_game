@@ -15,7 +15,7 @@ export default class MainMenuScene extends Phaser.Scene {
   }
 
   getPlayButton() {
-    const button = this.add.image(400, 300, 'play_button');
+    const button = this.add.image(240, 160, 'play_button');
     button.setInteractive();
     button.on('pointerdown', () => this.scene.start('GameScene'));
     return button;

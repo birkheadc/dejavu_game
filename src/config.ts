@@ -7,8 +7,8 @@ const config: Phaser.Types.Core.GameConfig = {
   parent: 'game',
   backgroundColor: '#666666',
   scale: {
-    width: 800,
-    height: 600,
+    width: 480,
+    height: 320,
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH
   },
@@ -16,7 +16,9 @@ const config: Phaser.Types.Core.GameConfig = {
     default: 'arcade',
     arcade: {
       gravity: { y: 3000 },
-      debug: false
+      debug: false,
+      fixedStep: true,
+      fps: 120
     },
   },
   scene: [ scenes.MainMenuScene, scenes.GameScene ]
