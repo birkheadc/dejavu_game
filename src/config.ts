@@ -15,7 +15,7 @@ const config: Phaser.Types.Core.GameConfig = {
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { y: 3000 },
+      gravity: { y: 1200},
       debug: false,
       fixedStep: true,
       fps: 120
@@ -24,4 +24,4 @@ const config: Phaser.Types.Core.GameConfig = {
   scene: [ scenes.MainMenuScene, scenes.GameScene ]
 }
 
-export default config;
+export default config;  

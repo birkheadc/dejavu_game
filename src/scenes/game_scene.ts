@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import PlayerCharacter from "../playerCharacter/playerCharacter";
 import map from '../assets/map_01.json';
-import playerSpriteSheet from '../assets/character.png';
+import playerSpriteSheet from '../assets/Fumiko.png';
 import terrainSpriteSheet from '../assets/mininicular.png';
 import PlayerController from "../playerController/PlayerController";
 
@@ -18,8 +18,8 @@ export default class GameScene extends Phaser.Scene {
   preload() {
     console.log('Preloading Game Scene');
     this.load.tilemapTiledJSON('map', map);
-    this.load.spritesheet('playerSprite', playerSpriteSheet, { frameWidth: 64, frameHeight: 64});
-    this.load.spritesheet('terrainSprite', terrainSpriteSheet, { frameWidth: 64, frameHeight: 64});
+    this.load.spritesheet('playerSprite', playerSpriteSheet, { frameWidth: 24, frameHeight: 32});
+    this.load.spritesheet('terrainSprite', terrainSpriteSheet, { frameWidth: 16, frameHeight: 16});
   }
 
   create() {
