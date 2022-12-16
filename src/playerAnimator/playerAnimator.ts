@@ -11,10 +11,31 @@ export default class PlayerAnimator {
     this.state = 'null';
   }
 
+  animateIdle() {
+    if (this.state !== 'idle') {
+      this.state = 'idle';
+      this.player.play('idle');
+    }
+  }
+
+  animateWalk() {
+    if (this.state !== 'walk') {
+      this.state = 'walk';
+      this.player.play('walk');
+    }
+  }
+
+  animateJump() {
+    if (this.state !== 'jump') {
+      this.state = 'jump';
+      this.player.play('jump');
+    }
+  }
+
   defineAnimations() {
     this.player.anims.create({
       key: 'walk',
-      frames:this.player.anims.generateFrameNumbers('playerSprite', { frames: [0, 1, 2, 3, 4 ]}),
+      frames:this.player.anims.generateFrameNumbers('playerSprite', { frames: [39, 40 ]}),
       frameRate: 8,
       repeat: -1
     });
@@ -26,12 +47,13 @@ export default class PlayerAnimator {
     });
     this.player.anims.create({
       key: 'jump',  
-      frames:this.player.anims.generateFrameNumbers('playerSprite', { frames: [20, 21, 22, 23, 24 ]}),
-      frameRate: 8
+      frames:this.player.anims.generateFrameNumbers('playerSprite', { frames: [45 ]}),
+      frameRate: 8,
+      repeat: 1
     });
     this.player.anims.create({
-      key: 'jump',  
-      frames:this.player.anims.generateFrameNumbers('playerSprite', { frames: [20, 21, 22, 23, 24 ]}),
+      key: 'fall',  
+      frames:this.player.anims.generateFrameNumbers('playerSprite', { frames: [47 ]}),
       frameRate: 8,
       repeat: -1
     });
@@ -45,7 +67,6 @@ export default class PlayerAnimator {
   }
 
   changeAnimation() {
-    console.log('State: ', this.state);
     this.player.play(this.state);
   }
 }

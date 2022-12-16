@@ -1,3 +1,4 @@
+import { throws } from 'assert';
 import Phaser, { Physics } from 'phaser';
 import PlayerAnimator from '../playerAnimator/playerAnimator';
 
@@ -6,12 +7,12 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
 
   animator: PlayerAnimator;
 
-  MOVE_SPEED_X = 200;
+  MOVE_SPEED_X = 150;
   isFalling: boolean = false;
   isJumping: boolean = false;
   canJump: boolean = true;
 
-  JUMP_FORCE = 50;
+  JUMP_FORCE = 45;
   MAX_JUMP_TIME = 300;
   jumpTime: number = 0;
 
@@ -30,10 +31,12 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
 
   checkFlip(): void {
     if (this.body.velocity.x < 0) {
-      this.scaleX = -1;
+      this.flipX = true;
       return;
     }
-    this.scaleX = 1;
+    if (this.body.velocity.x > 0) {
+      this.flipX = false;
+    }
   }
 
   getBody(): Physics.Arcade.Body {
@@ -60,6 +63,11 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
 
   handleJumping(delta: any) {
     if (this.isJumping) {
+      if (this.getBody().onCeiling()) {
+        this.isJumping = false;
+        this.jumpTime = 0;
+        this.setVelocityY(0);
+      }
       this.jumpTime += delta;
       if (this.jumpTime < this.MAX_JUMP_TIME) {
         this.setVelocityY(-1 * (this.JUMP_FORCE / ((this.jumpTime + 100) / 1000)));
@@ -82,7 +90,7 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
   }
 
   handleAnimation() {
-    if (this.getBody().velocity.y !== 0) {
+    if (this.isFalling === true) {
       this.animate('jump');
       return;
     }
@@ -94,6 +102,7 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
   }
 
   update(time: any, delta: any) {
+    this.checkFlip();
     this.handleJumping(delta);
     this.handleFalling();
     this.handleAnimation();
