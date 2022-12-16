@@ -9,12 +9,23 @@ const mapOfMaps = new Map<string, object>(
   ]
 );
 
+const mapOfChars = new Map<string, string>(
+  [
+    ["1A", "a"],
+    ["1B", "b"]
+  ]
+);
+
 const mapList = [
   "1A", "1B"
 ];
 
 const getMap = (id: string) => {
   return mapOfMaps.get(id);
+}
+
+const getCharId = (id: string) => {
+  return mapOfChars.get(id);
 }
 
 const getStartingLocation = (id: string): { x: number, y: number} => {
@@ -41,7 +52,8 @@ const maps = {
   getMap,
   getStartingLocation,
   getEndLocation,
-  getNextMapId
+  getNextMapId,
+  getCharId
 }
 
 export default maps;

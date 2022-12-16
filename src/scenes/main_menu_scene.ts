@@ -22,12 +22,10 @@ export default class MainMenuScene extends Phaser.Scene {
   }
 
   preload() {
-    console.log('Preloading Main Menu Scene');
     this.load.image('play_button', playButtonImg);
   }
 
   create() {
-    console.log('Creating Main Menu Scene');
     const button = this.getPlayButton();
   }
 }

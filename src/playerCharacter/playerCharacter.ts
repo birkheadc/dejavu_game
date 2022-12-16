@@ -16,10 +16,10 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
   MAX_JUMP_TIME = 300;
   jumpTime: number = 0;
 
-  constructor(scene: Phaser.Scene, x: number, y: number) {
-    super(scene, x, y, 'playerSprite');
+  constructor(scene: Phaser.Scene, x: number, y: number, spriteId: string) {
+    super(scene, x, y, spriteId);
     this.setScale(0.5);
-    this.animator = new PlayerAnimator(this);
+    this.animator = new PlayerAnimator(this, spriteId);
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     this.animate('idle');

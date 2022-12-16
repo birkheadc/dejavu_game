@@ -10,6 +10,5 @@ export default class Game {
   }
 
   start() {
-    console.log('Start game.');
   }
 }

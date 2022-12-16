@@ -19,30 +19,26 @@ export default class GameScene extends Phaser.Scene {
   }
 
   init(data: { character: string, stage: string }) {
-    console.log('init: ', data.stage);
     this.character = data.character;
     this.stage = data.stage;
   }
 
   preload() {
-    console.log('Preloading Game Scene');
-    this.load.tilemapTiledJSON('map', maps.getMap(this.stage));
-    this.load.spritesheet('playerSprite', characters(this.character), { frameWidth: 24, frameHeight: 32 });
-    this.load.spritesheet('terrainSprite', terrainSpriteSheet, { frameWidth: 16, frameHeight: 16});
+    this.load.tilemapTiledJSON('map_' + this.stage, maps.getMap(this.stage));
+    this.load.spritesheet('playerSprite_' + this.character, characters(this.character), { frameWidth: 24, frameHeight: 32 });
+    this.load.spritesheet('terrainSprite', terrainSpriteSheet, { frameWidth: 16, frameHeight: 16}); 
   }
 
   create() {
-    console.log('Creating Game Scene');
-    this.map = this.makeTilemap('map');
+    this.map = this.makeTilemap('map_' + this.stage);
     this.player = this.spawnPlayer();
     this.physics.add.collider(this.player, this.map.getLayer('ground').tilemapLayer);
     this.endZone = this.spawnEndZone();
-    this.player.on('enter', () => console.log('poop'));
   }
 
   spawnPlayer(): PlayerCharacter {
     const position = maps.getStartingLocation(this.stage);
-    const player = new PlayerCharacter(this, position.x, position.y);
+    const player = new PlayerCharacter(this, position.x, position.y, 'playerSprite_' + this.character);
     this.controller = new PlayerController(this, player);
     return player;
   }
@@ -56,12 +52,11 @@ export default class GameScene extends Phaser.Scene {
       8,
       8
     );
-    console.log(endZone);
     return endZone;
   }
 
   makeTilemap(key: string): Phaser.Tilemaps.Tilemap {
-    const map = this.make.tilemap({key: 'map'});
+    const map = this.make.tilemap({key: 'map_' + this.stage});
     const groundTiles = map.addTilesetImage('mininicular', 'terrainSprite');
     map.createLayer('back', groundTiles, 0, 0);
     map.createLayer('mid', groundTiles, 0, 0);
@@ -84,8 +79,10 @@ export default class GameScene extends Phaser.Scene {
   }
 
   endStage() {
-    console.log("Next scene: ", maps.getNextMapId(this.stage));
-    this.scene.restart({character: 'a', stage: maps.getNextMapId(this.stage)});
+    this.scene.stop();
+    // this.events.off();
+    const next = maps.getNextMapId(this.stage);
+    this.scene.start('GameScene', {character: maps.getCharId(next), stage: next});
   }
 
   update(time: any, delta: any) {
