@@ -3,15 +3,30 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "map_01.tmj",
     "expandedProjectPaths": [
     ],
     "fileStates": {
         "": {
             "scaleInDock": 1
+        },
+        "map_01.tmj": {
+            "scale": 1.9079166666666665,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 240.052413190653,
+                "y": 97.22646866127977
+            }
+        },
+        "map_01.tmj#mininicular": {
+            "scaleInDock": 1
+        },
+        "mininicular.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
         }
     },
-    "last.exportedFilePath": "/home/colby/dev/birchegames/games/dejavu/maps",
+    "last.exportedFilePath": "/home/colby/dev/birchegames/games/dejavu/public/assets",
     "last.imagePath": "/home/colby/Tiled/tilesets",
     "map.height": 20,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
@@ -20,9 +35,13 @@
     "map.tileWidth": 16,
     "map.width": 30,
     "openFiles": [
+        "mininicular.tsx",
+        "map_01.tmj"
     ],
     "project": "tiled.tiled-project",
     "recentFiles": [
+        "mininicular.tsx",
+        "map_01.tmj"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

@@ -1,8 +1,8 @@
 import Phaser from "phaser";
 import PlayerCharacter from "../playerCharacter/playerCharacter";
-import map from '../assets/map_01.json';
-import playerSpriteSheet from '../assets/Fumiko.png';
-import terrainSpriteSheet from '../assets/mininicular.png';
+import map from '../assets/maps/map_1A.json';
+import playerSpriteSheet from '../assets/character/Fumiko.png';
+import terrainSpriteSheet from '../assets/maps/mininicular.png';
 import PlayerController from "../playerController/PlayerController";
 
 export default class GameScene extends Phaser.Scene {
