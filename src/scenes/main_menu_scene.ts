@@ -1,5 +1,9 @@
 import Phaser from "phaser";
+import characters from "../assets/character";
 import playButtonImg from '../assets/play_button.png';
+import stages from "../assets/stages";
+import terrainSpriteSheet from '../assets/maps/mininicular.png';
+import mobs from "../assets/mobs";
 
 export default class MainMenuScene extends Phaser.Scene {
 
@@ -17,12 +21,16 @@ export default class MainMenuScene extends Phaser.Scene {
   getPlayButton() {
     const button = this.add.image(240, 160, 'play_button');
     button.setInteractive();
-    button.on('pointerdown', () => this.scene.start('GameScene', { character: 'a', stage: '1A' }));
+    button.on('pointerdown', () => this.scene.start('GameScene', {stage: stages.getStageData(0) }));
     return button;
   }
 
   preload() {
     this.load.image('play_button', playButtonImg);
+    this.load.spritesheet('terrainSprite', terrainSpriteSheet, { frameWidth: 16, frameHeight: 16}); 
+    mobs.preloadMobs(this);
+    stages.preloadStages(this);
+    characters.preloadCharacters(this);
   }
 
   create() {

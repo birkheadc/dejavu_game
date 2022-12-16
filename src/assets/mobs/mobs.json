@@ -1,0 +1,16 @@
+{
+  "mobs": [
+    {
+      "id": "crumble_platform",
+      "sprite": "crumblePlatformSprite",
+      "animations": [
+        {
+          "name": "crumble",
+          "frames": [ 0, 1, 2, 3, 4 ],
+          "frameRate": 1,
+          "repeat": 0
+        }
+      ]
+    }
+  ]
+}

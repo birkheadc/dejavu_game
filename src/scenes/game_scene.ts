@@ -1,62 +1,63 @@
 import Phaser from "phaser";
-import PlayerCharacter from "../playerCharacter/playerCharacter";
-import maps from "../assets/maps";
-import characters from '../assets/character';
-import terrainSpriteSheet from '../assets/maps/mininicular.png';
-import PlayerController from "../playerController/PlayerController";
+import PlayerCharacter from "../player/playerCharacter/playerCharacter";
+import PlayerController from "../player/playerController/PlayerController";
+import stages, { IStageData } from "../assets/stages";
+import mobs, { IMobData } from "../assets/mobs";
+import Mob from "../Mob/mob";
 
 export default class GameScene extends Phaser.Scene {
 
   controller: PlayerController | null = null;
   player: PlayerCharacter | null = null;
   map: Phaser.Tilemaps.Tilemap | null = null;
-  endZone: Phaser.GameObjects.Zone | null = null;
-  character: string = 'error';
-  stage: string = 'error';
+  goal: Phaser.GameObjects.Zone | null = null;
+  stage: IStageData = stages.getDefaultStageData();
+  mobs: Mob[] = [];
   
   constructor() {
     super('GameScene');
   }
 
-  init(data: { character: string, stage: string }) {
-    this.character = data.character;
+  init(data: {stage: IStageData }) {
     this.stage = data.stage;
   }
 
   preload() {
-    this.load.tilemapTiledJSON('map_' + this.stage, maps.getMap(this.stage));
-    this.load.spritesheet('playerSprite_' + this.character, characters(this.character), { frameWidth: 24, frameHeight: 32 });
-    this.load.spritesheet('terrainSprite', terrainSpriteSheet, { frameWidth: 16, frameHeight: 16}); 
+    
   }
 
   create() {
-    this.map = this.makeTilemap('map_' + this.stage);
+    this.map = this.makeTilemap();
     this.player = this.spawnPlayer();
     this.physics.add.collider(this.player, this.map.getLayer('ground').tilemapLayer);
-    this.endZone = this.spawnEndZone();
+    this.goal = this.spawnGoal();
+    this.mobs = this.spawnMobs();
   }
 
   spawnPlayer(): PlayerCharacter {
-    const position = maps.getStartingLocation(this.stage);
-    const player = new PlayerCharacter(this, position.x, position.y, 'playerSprite_' + this.character);
+    const player = new PlayerCharacter(
+      this,
+      this.stage.startLocation.x,
+      this.stage.startLocation.y,
+      this.stage.character
+    );
     this.controller = new PlayerController(this, player);
     return player;
   }
 
-  spawnEndZone(): Phaser.GameObjects.Zone {
-    const position = maps.getEndLocation(this.stage);
-    const endZone = new Phaser.GameObjects.Zone(
+  spawnGoal(): Phaser.GameObjects.Zone {
+    const goal = new Phaser.GameObjects.Zone(
       this,
-      position.x,
-      position.y,
+      this.stage.goalLocation.x,
+      this.stage.goalLocation.y,
       8,
       8
     );
-    return endZone;
+    return goal;
   }
 
-  makeTilemap(key: string): Phaser.Tilemaps.Tilemap {
-    const map = this.make.tilemap({key: 'map_' + this.stage});
+  makeTilemap(): Phaser.Tilemaps.Tilemap {
+    const map = this.make.tilemap({key: this.stage.id});
     const groundTiles = map.addTilesetImage('mininicular', 'terrainSprite');
     map.createLayer('back', groundTiles, 0, 0);
     map.createLayer('mid', groundTiles, 0, 0);
@@ -71,18 +72,48 @@ export default class GameScene extends Phaser.Scene {
     return map;
   }
 
+  spawnMobs() {
+    // Look how good at naming variables I am!
+    const _mobs: Mob[] = [];
+    this.stage.mobs.forEach(mob => {
+      const mobData = mobs.getMob(mob.id);
+      if (mobData != null) {
+        const _mob = new Mob(this, mob.position.x, mob.position.y, mobData);
+        if (this.player != null) {
+          this.physics.add.collider(this.player, _mob);
+        }
+        _mobs.push(_mob);
+      }
+    });
+    return _mobs;
+  }
+
   handleGoalCheck() {
-    if (this.player == null || this.endZone == null) return;
-    if (Phaser.Geom.Rectangle.Overlaps(this.player?.getBounds(), this.endZone?.getBounds())) {
+    if (this.player == null || this.goal == null) return;
+    if (Phaser.Geom.Rectangle.Overlaps(this.player?.getBounds(), this.goal?.getBounds())) {
       this.endStage();
     }
   }
 
   endStage() {
+    this.controller?.setUsable(false);
+    this.player?.setAlpha(0);
+    this.mobs.forEach(mob => {
+      if (mob.mobData.id === 'crumble_platform') {
+        mob.on('animationcomplete', () => {
+          mob.destroy()
+          this.goToNextStage();
+        });
+        mob.play('crumble');
+      }
+    });
+    this.mobs = [];
+    
+  }
+
+  goToNextStage() {
     this.scene.stop();
-    // this.events.off();
-    const next = maps.getNextMapId(this.stage);
-    this.scene.start('GameScene', {character: maps.getCharId(next), stage: next});
+    this.scene.start('GameScene', {stage: stages.getNextStage(this.stage)});
   }
 
   update(time: any, delta: any) {
