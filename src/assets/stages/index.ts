@@ -4,6 +4,7 @@ import { IMobData } from '../mobs';
 
 export interface IStageData {
   id: string,
+  mapName: string,
   next: string,
   character: string,
   startLocation: {
@@ -19,13 +20,14 @@ export interface IStageData {
     "position": {
       "x": number,
       "y": number
-    }
+    },
+    "active": boolean
   }[]
 }
 
 function preloadStages(scene: Phaser.Scene) {
   stageData.stages.forEach(stage => {
-    scene.load.tilemapTiledJSON(stage.id, maps.getMap(stage.id));
+    scene.load.tilemapTiledJSON(stage.id, maps.getMap(stage.mapName));
   });
 }
 
@@ -40,6 +42,7 @@ function getNextStage(stage: IStageData) {
 function getDefaultStageData(): IStageData {
   return {
     id: "",
+    mapName: "",
     next: "",
     character: "",
     startLocation: {

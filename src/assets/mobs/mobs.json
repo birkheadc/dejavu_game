@@ -3,9 +3,63 @@
     {
       "id": "crumble_platform",
       "sprite": "crumblePlatformSprite",
+      "size": {
+        "x": 16,
+        "y": 8
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "isDangerous": false,
       "animations": [
         {
-          "name": "crumble",
+          "name": "active",
+          "frames": [ 0 ],
+          "frameRate": 1,
+          "repeat": -1
+        },
+        {
+          "name": "inactive",
+          "frames": [ 4 ],
+          "frameRate": 1,
+          "repeat": -1
+        },
+        {
+          "name": "transition",
+          "frames": [ 0, 1, 2, 3, 4 ],
+          "frameRate": 1,
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "id": "spikes",
+      "sprite": "spikesSprite",
+      "size": {
+        "x": 12,
+        "y": 4
+      },
+      "offset": {
+        "x": 2,
+        "y": 12
+      },
+      "isDangerous": true,
+      "animations": [
+        {
+          "name": "active",
+          "frames": [ 4 ],
+          "frameRate": 1,
+          "repeat": -1
+        },
+        {
+          "name": "inactive",
+          "frames": [ 0 ],
+          "frameRate": 1,
+          "repeat": -1
+        },
+        {
+          "name": "transition",
           "frames": [ 0, 1, 2, 3, 4 ],
           "frameRate": 1,
           "repeat": 0

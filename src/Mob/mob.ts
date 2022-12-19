@@ -4,12 +4,15 @@ import { IMobData } from "../assets/mobs";
 export default class Mob extends Physics.Arcade.Sprite {
 
   mobData: IMobData;
+  isActive: boolean;
   
-  constructor(scene:Phaser.Scene, x: number, y: number, mobData: IMobData) {
+  constructor(scene:Phaser.Scene, x: number, y: number, mobData: IMobData, isActive: boolean) {
     super(scene, x, y, mobData.sprite);
     this.mobData = mobData;
+    this.isActive = isActive;
     this.addToScene();
     this.defineAnims();
+    this.play(isActive ? 'active' : 'inactive');
   }
 
   addToScene() {
@@ -17,8 +20,8 @@ export default class Mob extends Physics.Arcade.Sprite {
     this.scene.physics.add.existing(this);
     this.setGravity(0, -1200);
     this.setImmovable(true);
-    this.body.setSize(16, 8);
-    this.body.setOffset(0, 0);
+    this.body.setSize(this.mobData.size.x, this.mobData.size.y);
+    this.body.setOffset(this.mobData.offset.x, this.mobData.offset.y);
   }
 
   defineAnims() {

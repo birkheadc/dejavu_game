@@ -31,14 +31,16 @@
             }
         },
         "map_1A.tmj#mininicular": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "mininicular.tsx": {
             "scaleInDock": 2,
             "scaleInEditor": 1
         }
     },
-    "last.exportedFilePath": "/home/colby/dev/birchegames/games/dejavu/public/assets",
+    "last.exportedFilePath": "/home/colby/dev/birchegames/games/dejavu/src/assets/maps",
+    "last.externalTilesetPath": "/home/colby/dev/birchegames/games/dejavu/maps",
     "last.imagePath": "/home/colby/Tiled/tilesets",
     "map.height": 20,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
@@ -56,6 +58,8 @@
         "map_1A.tmj",
         "map_01.tmj"
     ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
         "height": 16,

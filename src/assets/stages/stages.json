@@ -2,40 +2,226 @@
   "stages": [
     {
       "id": "map_1A",
+      "mapName": "map_1A",
       "next": "map_1B",
       "character": "playerSprite_a",
       "startLocation": {
-        "x": 5,
-        "y": 272
+        "x": 1,
+        "y": -1
       },
       "goalLocation": {
-        "x": 50,
-        "y": 272
+        "x": 2,
+        "y": 5
       },
       "mobs": [
         {
           "id": "crumble_platform",
           "position": {
-            "x": 40,
-            "y": 240
-          }
+            "x": 3,
+            "y": 14
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 6,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 7,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 14,
+            "y": 17
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 16,
+            "y": 17
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 25,
+            "y": 14
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 16,
+            "y": 13
+          },
+          "active": true
+        },{
+          "id": "crumble_platform",
+          "position": {
+            "x": 7,
+            "y": 10
+          },
+          "active": true
+        },
+        
+        {
+          "id": "spikes",
+          "position": {
+            "x": 3,
+            "y": 15
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 6,
+            "y": 6
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 7,
+            "y": 6
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 14,
+            "y": 18
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 16,
+            "y": 18
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 25,
+            "y": 16
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 16,
+            "y": 13
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 7,
+            "y": 10
+          },
+          "active": false
         }
       ]
     },
     {
       "id": "map_1B",
+      "mapName": "map_1A",
       "next": "",
       "character": "playerSprite_b",
       "startLocation": {
-        "x": 5,
-        "y": 272
+        "x": 1,
+        "y": -1
       },
       "goalLocation": {
-        "x": 470,
-        "y": 272
+        "x": 29,
+        "y": 18
       },
       "mobs": [
-
+        {
+          "id": "spikes",
+          "position": {
+            "x": 3,
+            "y": 15
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 6,
+            "y": 6
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 7,
+            "y": 6
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 14,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 16,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 25,
+            "y": 16
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 16,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 7,
+            "y": 10
+          },
+          "active": true
+        }
       ]
     }
   ]

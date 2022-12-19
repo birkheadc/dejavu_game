@@ -20,6 +20,7 @@ export default class GameScene extends Phaser.Scene {
 
   init(data: {stage: IStageData }) {
     this.stage = data.stage;
+    console.log('init stage: ', this.stage);
   }
 
   preload() {
@@ -32,13 +33,15 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.map.getLayer('ground').tilemapLayer);
     this.goal = this.spawnGoal();
     this.mobs = this.spawnMobs();
+    this.controller?.setUsable(true);
+    this.player?.setAlpha(1);
   }
 
   spawnPlayer(): PlayerCharacter {
     const player = new PlayerCharacter(
       this,
-      this.stage.startLocation.x,
-      this.stage.startLocation.y,
+      (this.stage.startLocation.x * 16) + 8,
+      (this.stage.startLocation.y * 16) + 8,
       this.stage.character
     );
     this.controller = new PlayerController(this, player);
@@ -48,8 +51,8 @@ export default class GameScene extends Phaser.Scene {
   spawnGoal(): Phaser.GameObjects.Zone {
     const goal = new Phaser.GameObjects.Zone(
       this,
-      this.stage.goalLocation.x,
-      this.stage.goalLocation.y,
+      (this.stage.goalLocation.x * 16) + 8,
+      (this.stage.goalLocation.y * 16) + 8,
       8,
       8
     );
@@ -78,14 +81,34 @@ export default class GameScene extends Phaser.Scene {
     this.stage.mobs.forEach(mob => {
       const mobData = mobs.getMob(mob.id);
       if (mobData != null) {
-        const _mob = new Mob(this, mob.position.x, mob.position.y, mobData);
+        const _mob = new Mob(this, (mob.position.x * 16) + 8, (mob.position.y * 16) + 8, mobData, mob.active);
         if (this.player != null) {
-          this.physics.add.collider(this.player, _mob);
+          if (_mob.isActive)
+          this.physics.add.collider(this.player, _mob, () => {
+            if (_mob.isActive && _mob.mobData.isDangerous === true) {
+              this.die()
+            }
+          });
         }
         _mobs.push(_mob);
       }
     });
     return _mobs;
+  }
+
+  // handleDiedCheck() {
+  //   this.mobs.forEach(mob => {
+  //     if (mob.mobData.isDangerous === true) {
+  //       if (this.player == null || this.goal == null) return;
+  //       if (mob.isActive && Phaser.Geom.Rectangle.Overlaps(this.player?.getBounds(), mob.body)) {
+  //         this.die();
+  //       }
+  //     }
+  //   });
+  // }
+
+  die() {
+    console.log('you died!');
   }
 
   handleGoalCheck() {
@@ -98,27 +121,25 @@ export default class GameScene extends Phaser.Scene {
   endStage() {
     this.controller?.setUsable(false);
     this.player?.setAlpha(0);
-    this.mobs.forEach(mob => {
-      if (mob.mobData.id === 'crumble_platform') {
-        mob.on('animationcomplete', () => {
-          mob.destroy()
-          this.goToNextStage();
-        });
-        mob.play('crumble');
+    for (let i = 0; i < this.mobs.length; i++) {
+      const mob = this.mobs[i];
+      if (i === 0) {
+        mob.on('animationcomplete', () => {this.goToNextStage()});
       }
-    });
-    this.mobs = [];
-    
+      mob.play('transition');
+    }
+    this.mobs = [];    
   }
 
   goToNextStage() {
-    this.scene.stop();
-    this.scene.start('GameScene', {stage: stages.getNextStage(this.stage)});
+    const next = stages.getNextStage(this.stage);
+    this.scene.restart({stage: stages.getNextStage(this.stage)});
   }
 
   update(time: any, delta: any) {
     this.player?.update(time, delta);
     this.controller?.update(time, delta);
+    // this.handleDiedCheck();
     this.handleGoalCheck();
   }
 }
