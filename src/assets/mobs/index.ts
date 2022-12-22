@@ -1,5 +1,7 @@
 import crumblePlatformSprite from './crumble_platform/crumble_platform.png';
 import spikesSprite from './spikes/spikes.png';
+import lavaSprite from './lava/lava.png';
+import goalSprite from './goal/goal.png';
 import mobData from './mobs.json';
 
 export interface IMobData {
@@ -14,6 +16,8 @@ export interface IMobData {
     y: number
   },
   isDangerous: boolean,
+  isCollide: boolean,
+  isRemoveAfterTransition: boolean,
   animations: {
     name: string,
     frames: number[],
@@ -25,6 +29,8 @@ export interface IMobData {
 function preloadMobs(scene: Phaser.Scene) {
   scene.load.spritesheet('crumblePlatformSprite', crumblePlatformSprite, {frameWidth: 16, frameHeight: 16});
   scene.load.spritesheet('spikesSprite', spikesSprite, {frameWidth: 16, frameHeight: 16});
+  scene.load.spritesheet('lavaSprite', lavaSprite, {frameWidth: 16, frameHeight: 16 });
+  scene.load.spritesheet('goalSprite', goalSprite, {frameWidth: 16, frameHeight: 48 });
 }
 
 function getMob(id: string): IMobData | undefined {

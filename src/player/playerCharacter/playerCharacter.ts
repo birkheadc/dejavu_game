@@ -16,6 +16,8 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
   MAX_JUMP_TIME = 300;
   jumpTime: number = 0;
 
+  offscreenCallback: Function | null = null;
+
   constructor(scene: Phaser.Scene, x: number, y: number, spriteId: string) {
     super(scene, x, y, spriteId);
     this.setScale(0.5);
@@ -23,6 +25,10 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     this.animate('idle');
+  }
+
+  setOffscreenCallback(callback: Function) {
+    this.offscreenCallback = callback;
   }
 
   animate(animation: string) {
@@ -101,10 +107,24 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
     this.animate('idle');
   }
 
+  checkOffscreen() {
+    if (this.offscreenCallback == null) return;
+    // console.log('offscreen callback exists, checking...');
+    if (this.scene.cameras.main.worldView.contains(this.getBody().x, this.getBody().y) === false) {
+      console.log('this player is offscreen!');
+      this.offscreenCallback();
+      this.offscreenCallback = null;
+    }
+    else {
+      console.log('player is on screen');
+    }
+  }
+
   update(time: any, delta: any) {
     this.checkFlip();
     this.handleJumping(delta);
     this.handleFalling();
     this.handleAnimation();
+    this.checkOffscreen();
   }
 }

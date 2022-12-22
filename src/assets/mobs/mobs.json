@@ -12,6 +12,8 @@
         "y": 0
       },
       "isDangerous": false,
+      "isCollide": true,
+      "isRemoveAfterTransition": true,
       "animations": [
         {
           "name": "active",
@@ -27,7 +29,7 @@
         },
         {
           "name": "transition",
-          "frames": [ 0, 1, 2, 3, 4 ],
+          "frames": [ 0, 1, 2, 3 ],
           "frameRate": 1,
           "repeat": 0
         }
@@ -45,6 +47,8 @@
         "y": 12
       },
       "isDangerous": true,
+      "isCollide": true,
+      "isRemoveAfterTransition": false,
       "animations": [
         {
           "name": "active",
@@ -63,6 +67,64 @@
           "frames": [ 0, 1, 2, 3, 4 ],
           "frameRate": 1,
           "repeat": 0
+        }
+      ]
+    },
+    {
+      "id": "lava",
+      "sprite": "lavaSprite",
+      "size": {
+        "x": 16,
+        "y": 2
+      },
+      "offset": {
+        "x": 0,
+        "y": 14
+      },
+      "isDangerous": true,
+      "isCollide": true,
+      "isRemoveAfterTransition": false,
+      "animations": [
+        {
+          "name": "active",
+          "frames": [ 0, 1, 2, 3 ],
+          "frameRate": 4,
+          "repeat": -1
+        },
+        {
+          "name": "inactive",
+          "frames": [ 0 ],
+          "frameRate": 1,
+          "repeat": -1
+        }
+      ]
+    },
+    {
+      "id": "goal",
+      "sprite": "goalSprite",
+      "size": {
+        "x": 16,
+        "y": 48
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "isDangerous": false,
+      "isCollide": false,
+      "isRemoveAfterTransition": false,
+      "animations": [
+        {
+          "name": "active",
+          "frames": [ 0 ],
+          "frameRate": 1,
+          "repeat": -1
+        },
+        {
+          "name": "inactive",
+          "frames": [ 0 ],
+          "frameRate": 1,
+          "repeat": -1
         }
       ]
     }

@@ -7,6 +7,9 @@ export interface IStageData {
   mapName: string,
   next: string,
   character: string,
+  hasTransition: boolean,
+  playerTransitionTime: string,
+  playerTransitionMethod: string,
   startLocation: {
     x: number,
     y: number
@@ -45,6 +48,9 @@ function getDefaultStageData(): IStageData {
     mapName: "",
     next: "",
     character: "",
+    hasTransition: false,
+    playerTransitionMethod: "disappear",
+    playerTransitionTime: "before",
     startLocation: {
       x: 0,
       y: 0

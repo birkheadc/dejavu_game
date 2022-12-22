@@ -13,6 +13,8 @@ export default class GameScene extends Phaser.Scene {
   goal: Phaser.GameObjects.Zone | null = null;
   stage: IStageData = stages.getDefaultStageData();
   mobs: Mob[] = [];
+
+  isComplete: boolean = false;
   
   constructor() {
     super('GameScene');
@@ -20,7 +22,7 @@ export default class GameScene extends Phaser.Scene {
 
   init(data: {stage: IStageData }) {
     this.stage = data.stage;
-    console.log('init stage: ', this.stage);
+    this.isComplete = false;
   }
 
   preload() {
@@ -83,7 +85,7 @@ export default class GameScene extends Phaser.Scene {
       if (mobData != null) {
         const _mob = new Mob(this, (mob.position.x * 16) + 8, (mob.position.y * 16) + 8, mobData, mob.active);
         if (this.player != null) {
-          if (_mob.isActive)
+          if (_mob.isActive && _mob.mobData.isCollide)
           this.physics.add.collider(this.player, _mob, () => {
             if (_mob.isActive && _mob.mobData.isDangerous === true) {
               this.die()
@@ -96,50 +98,95 @@ export default class GameScene extends Phaser.Scene {
     return _mobs;
   }
 
-  // handleDiedCheck() {
-  //   this.mobs.forEach(mob => {
-  //     if (mob.mobData.isDangerous === true) {
-  //       if (this.player == null || this.goal == null) return;
-  //       if (mob.isActive && Phaser.Geom.Rectangle.Overlaps(this.player?.getBounds(), mob.body)) {
-  //         this.die();
-  //       }
-  //     }
-  //   });
-  // }
-
   die() {
-    console.log('you died!');
+    this.cameras.main.flash(500, 255, 0, 0);
+    this.respawnPlayer();
+  }
+
+  respawnPlayer() {
+    this.player?.setRandomPosition((this.stage.startLocation.x * 16) + 8, (this.stage.startLocation.y * 16) + 8, 0, 0);
   }
 
   handleGoalCheck() {
-    if (this.player == null || this.goal == null) return;
+    if (this.player == null || this.goal == null || this.isComplete === true) return;
     if (Phaser.Geom.Rectangle.Overlaps(this.player?.getBounds(), this.goal?.getBounds())) {
       this.endStage();
     }
   }
 
   endStage() {
+    this.isComplete = true;
     this.controller?.setUsable(false);
-    this.player?.setAlpha(0);
-    for (let i = 0; i < this.mobs.length; i++) {
-      const mob = this.mobs[i];
-      if (i === 0) {
-        mob.on('animationcomplete', () => {this.goToNextStage()});
-      }
-      mob.play('transition');
+
+    if (this.stage.playerTransitionTime === 'before') {
+      this.playerExit(() => {
+        this.transitionMobs(() => {
+          this.goToNextStage();
+        });
+      });
     }
-    this.mobs = [];    
+    else {
+      this.transitionMobs(() => {
+        this.playerExit(() => {
+          this.goToNextStage();
+        });
+      })
+    }
+  }
+
+  playerExit(callback: Function) {
+    // Todo: Refactor this.
+    if (this.stage.playerTransitionMethod === 'disappear') {
+      this.player?.setAlpha(0);
+      callback();
+    }
+    else if (this.stage.playerTransitionMethod === 'right') {
+      this.player?.moveX(1);
+      this.player?.setOffscreenCallback(callback);
+    }
+    else if (this.stage.playerTransitionMethod === 'fall') {
+      console.log('test');
+      this.player?.setOffscreenCallback(callback);
+    }
+    else {
+      callback();
+    }
+  }
+
+  transitionMobs(callback: Function) {
+    if (this.stage.hasTransition === true) {
+      let finished: number = 0;
+      let total: number = 0;
+      for (let i = 0; i < this.mobs.length; i++) {
+        const mob = this.mobs[i];
+        if (mob.anims.exists('transition')) {
+          total++;
+          mob.on('animationcomplete', () => {
+            if (mob.mobData.isRemoveAfterTransition) {
+              mob.destroy();
+            }
+            finished++;
+            console.log('Finished: ', finished, " Total: ", total);
+            if (finished >= total) {
+              callback();
+            }
+          });
+          mob.play('transition');
+        }
+      }
+    }
+    else {
+      callback();
+    }
   }
 
   goToNextStage() {
-    const next = stages.getNextStage(this.stage);
     this.scene.restart({stage: stages.getNextStage(this.stage)});
   }
 
   update(time: any, delta: any) {
     this.player?.update(time, delta);
     this.controller?.update(time, delta);
-    // this.handleDiedCheck();
     this.handleGoalCheck();
   }
 }

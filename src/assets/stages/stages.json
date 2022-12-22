@@ -5,20 +5,63 @@
       "mapName": "map_1A",
       "next": "map_1B",
       "character": "playerSprite_a",
+      "hasTransition": true,
+      "playerTransitionTime": "before",
+      "playerTransitionMethod": "right",
       "startLocation": {
         "x": 1,
-        "y": -1
+        "y": 0
       },
       "goalLocation": {
-        "x": 2,
-        "y": 5
+        "x": 29,
+        "y": 18
       },
       "mobs": [
+        {
+          "id": "goal",
+          "position": {
+            "x": 29,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 18,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 22,
+            "y": 1
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 25,
+            "y": 1
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 27,
+            "y": 1
+          },
+          "active": true
+        },
         {
           "id": "crumble_platform",
           "position": {
             "x": 3,
-            "y": 14
+            "y": 13
           },
           "active": true
         },
@@ -141,17 +184,52 @@
             "y": 10
           },
           "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 18,
+            "y": 6
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 22,
+            "y": 6
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 25,
+            "y": 5
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 27,
+            "y": 9
+          },
+          "active": false
         }
       ]
     },
     {
       "id": "map_1B",
       "mapName": "map_1A",
-      "next": "",
+      "next": "map_2A",
       "character": "playerSprite_b",
+      "hasTransition": false,
+      "playerTransitionTime": "before",
+      "playerTransitionMethod": "right",
       "startLocation": {
         "x": 1,
-        "y": -1
+        "y": 0
       },
       "goalLocation": {
         "x": 29,
@@ -221,7 +299,679 @@
             "y": 10
           },
           "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 18,
+            "y": 6
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 22,
+            "y": 6
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 25,
+            "y": 5
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 27,
+            "y": 9
+          },
+          "active": true
         }
+      ]
+    },
+    {
+      "id": "map_2A",
+      "mapName": "map_2A",
+      "next": "map_2B",
+      "character": "playerSprite_a",
+      "hasTransition": true,
+      "playerTransitionTime": "before",
+      "playerTransitionMethod": "disappear",
+      "startLocation": {
+        "x": 1,
+        "y": 0
+      },
+      "goalLocation": {
+        "x": 22,
+        "y": 6
+      },
+      "mobs": [
+        {
+          "id": "goal",
+          "position": {
+            "x": 22,
+            "y": 5
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 25,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 6,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 9,
+            "y": 10
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 3,
+            "y": 5
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 17,
+            "y": 15
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 13,
+            "y": 7
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 14,
+            "y": 11
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 13,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 14,
+            "y": 18
+          },
+          "active": true
+        },
+
+        {
+          "id": "spikes",
+          "position": {
+            "x": 3,
+            "y": 12
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 17,
+            "y": 17
+          },
+          "active": false
+        },
+
+        {
+          "id": "lava",
+          "position": {
+            "x": 10,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 11,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 25,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 8,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 9,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 10,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 1,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 2,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 6,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 27,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 28,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 12,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 13,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 14,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 15,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 16,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 17,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 18,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 19,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 20,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 21,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 22,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 13,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 14,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 16,
+            "y": 18
+          },
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": "map_2B",
+      "mapName": "map_2A",
+      "next": "map_3A",
+      "character": "playerSprite_b",
+      "hasTransition": false,
+      "playerTransitionTime": "after",
+      "playerTransitionMethod": "disappear",
+      "startLocation": {
+        "x": 1,
+        "y": 0
+      },
+      "goalLocation": {
+        "x": 22,
+        "y": 6
+      },
+      "mobs": [
+        {
+          "id": "goal",
+          "position": {
+            "x": 22,
+            "y": 5
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 3,
+            "y": 12
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 17,
+            "y": 17
+          },
+          "active": true
+        },
+
+        {
+          "id": "lava",
+          "position": {
+            "x": 10,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 11,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 25,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 8,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 9,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 10,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 1,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 2,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 6,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 27,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 28,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 12,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 13,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 14,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 15,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 16,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 17,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 18,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 19,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 20,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 21,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 22,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 13,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 14,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 16,
+            "y": 18
+          },
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": "map_3A",
+      "mapName": "map_3A",
+      "next": "map_3B",
+      "character": "playerSprite_a",
+      "hasTransition": true,
+      "playerTransitionTime": "after",
+      "playerTransitionMethod": "fall",
+      "startLocation": {
+        "x": 1,
+        "y": 0
+      },
+      "goalLocation": {
+        "x": 26.5,
+        "y": 18
+      },
+      "mobs": [
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 26.5,
+            "y": 19
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 1,
+            "y": 5
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 2,
+            "y": 8
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 1,
+            "y": 11
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 2,
+            "y": 16
+          },
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": "map_3B",
+      "mapName": "map_3A",
+      "next": "map_4A",
+      "character": "playerSprite_b",
+      "hasTransition": false,
+      "playerTransitionTime": "after",
+      "playerTransitionMethod": "fall",
+      "startLocation": {
+        "x": 1,
+        "y": 0
+      },
+      "goalLocation": {
+        "x": 29,
+        "y": 18
+      },
+      "mobs": [
+        
       ]
     }
   ]
