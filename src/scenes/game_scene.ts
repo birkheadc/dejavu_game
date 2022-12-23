@@ -71,6 +71,8 @@ export default class GameScene extends Phaser.Scene {
     decorationLayerA.setDepth(1);
     const decorationLayerB = map.createLayer('ground_decoration_b', groundTiles, 0, 0);
     decorationLayerB.setDepth(1);
+    const decorationLayerC = map.createLayer('ground_decoration_c', groundTiles, 0, 0);
+    decorationLayerC.setDepth(1);
     
     groundLayer.setCollisionByExclusion([-1]);
     
@@ -99,7 +101,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   die() {
-    this.cameras.main.flash(500, 255, 0, 0);
+    this.cameras.main.flash(500, 255, 0, 0, true);
     this.respawnPlayer();
   }
 

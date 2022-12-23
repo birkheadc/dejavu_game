@@ -937,17 +937,299 @@
           "active": true
         },
         {
-          "id": "spikes",
+          "id": "crumble_platform",
           "position": {
-            "x": 1,
+            "x": 5,
+            "y": 14
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 5,
+            "y": 8
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 13,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 17,
+            "y": 6
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 19,
+            "y": 6
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 13,
             "y": 11
           },
           "active": true
         },
         {
+          "id": "crumble_platform",
+          "position": {
+            "x": 20,
+            "y": 14
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 12,
+            "y": 1
+          },
+          "active": true
+        },
+        {
+          "id": "crumble_platform",
+          "position": {
+            "x": 14,
+            "y": 1
+          },
+          "active": true
+        },
+
+        {
+          "id": "spikes",
+          "position": {
+            "x": 12,
+            "y": 3
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 14,
+            "y": 3
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 1,
+            "y": 11
+          },
+          "active": false
+        },
+        {
           "id": "spikes",
           "position": {
             "x": 2,
+            "y": 16
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 5,
+            "y": 17
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 5,
+            "y": 12
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 13,
+            "y": 9
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 17,
+            "y": 8
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 19,
+            "y": 11
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 13,
+            "y": 14
+          },
+          "active": false
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 20,
+            "y": 17
+          },
+          "active": false
+        },
+
+        {
+          "id": "lava",
+          "position": {
+            "x": 7,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 4,
+            "y": 6
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 19,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 21,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 9,
+            "y": 10
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 10,
+            "y": 10
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 11,
+            "y": 10
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 15,
+            "y": 8
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 15,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 16,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 15,
+            "y": 17
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 9,
+            "y": 16
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 10,
+            "y": 16
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 17,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 16,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 15,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 11,
             "y": 16
           },
           "active": true
@@ -971,7 +1253,231 @@
         "y": 18
       },
       "mobs": [
-        
+        {
+          "id": "spikes",
+          "position": {
+            "x": 1,
+            "y": 11
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 2,
+            "y": 16
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 5,
+            "y": 17
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 5,
+            "y": 12
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 13,
+            "y": 9
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 17,
+            "y": 8
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 19,
+            "y": 11
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 13,
+            "y": 14
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 20,
+            "y": 17
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 12,
+            "y": 3
+          },
+          "active": true
+        },
+        {
+          "id": "spikes",
+          "position": {
+            "x": 14,
+            "y": 3
+          },
+          "active": true
+        },
+
+        {
+          "id": "lava",
+          "position": {
+            "x": 17,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 16,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 15,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 7,
+            "y": 18
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 4,
+            "y": 6
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 19,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 21,
+            "y": 4
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 9,
+            "y": 10
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 10,
+            "y": 10
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 11,
+            "y": 10
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 15,
+            "y": 8
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 15,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 16,
+            "y": 13
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 15,
+            "y": 17
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 9,
+            "y": 16
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 10,
+            "y": 16
+          },
+          "active": true
+        },
+        {
+          "id": "lava",
+          "position": {
+            "x": 11,
+            "y": 16
+          },
+          "active": true
+        }
       ]
     }
   ]

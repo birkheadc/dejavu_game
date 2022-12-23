@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map_1A.tmj",
+    "activeFile": "map_2A.tmj",
     "expandedProjectPaths": [
         "."
     ],
@@ -26,8 +26,8 @@
             "scale": 1.9079166666666665,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 230.09390696658662,
-                "y": 153.83271456649925
+                "x": 239.52828128412318,
+                "y": 159.59816553832715
             }
         },
         "map_1A.tmj#mininicular": {
@@ -49,8 +49,8 @@
             "scale": 1.9079166666666665,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 240.052413190653,
-                "y": 160.12229744485694
+                "x": 239.52828128412318,
+                "y": 159.59816553832715
             }
         },
         "mininicular.tsx": {
@@ -69,12 +69,16 @@
     "map.width": 30,
     "openFiles": [
         "mininicular.tsx",
-        "map_1A.tmj"
+        "map_1A.tmj",
+        "map_2A.tmj",
+        "map_3A.tmj"
     ],
     "project": "tiled.tiled-project",
     "recentFiles": [
         "mininicular.tsx",
         "map_1A.tmj",
+        "map_3A.tmj",
+        "map_2A.tmj",
         "map_01.tmj"
     ],
     "tileset.embedInMap": true,
