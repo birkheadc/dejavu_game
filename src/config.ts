@@ -21,7 +21,7 @@ const config: Phaser.Types.Core.GameConfig = {
       fps: 120
     },
   },
-  scene: [ scenes.MainMenuScene, scenes.GameScene ]
+  scene: [ scenes.MainMenuScene, scenes.GameScene, scenes.EndScene ]
 }
 
 export default config;  

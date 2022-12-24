@@ -5,16 +5,23 @@
       "mapName": "map_1A",
       "next": "map_1B",
       "character": "playerSprite_a",
+      "onDeath": "respawn",
+      "isPlayerSlow": false,
       "hasTransition": true,
       "playerTransitionTime": "before",
       "playerTransitionMethod": "right",
+      "lingerTime": 0,
       "startLocation": {
         "x": 1,
         "y": 0
       },
       "goalLocation": {
         "x": 29,
-        "y": 18
+        "y": 17
+      },
+      "goalSize": {
+        "width": 1,
+        "height": 2
       },
       "mobs": [
         {
@@ -224,16 +231,23 @@
       "mapName": "map_1A",
       "next": "map_2A",
       "character": "playerSprite_b",
+      "onDeath": "respawn",
+      "isPlayerSlow": false,
       "hasTransition": false,
       "playerTransitionTime": "before",
       "playerTransitionMethod": "right",
+      "lingerTime": 0,
       "startLocation": {
         "x": 1,
         "y": 0
       },
       "goalLocation": {
         "x": 29,
-        "y": 18
+        "y": 17
+      },
+      "goalSize": {
+        "width": 1,
+        "height": 2
       },
       "mobs": [
         {
@@ -339,16 +353,23 @@
       "mapName": "map_2A",
       "next": "map_2B",
       "character": "playerSprite_a",
+      "onDeath": "respawn",
+      "isPlayerSlow": false,
       "hasTransition": true,
       "playerTransitionTime": "before",
       "playerTransitionMethod": "disappear",
+      "lingerTime": 0,
       "startLocation": {
         "x": 1,
         "y": 0
       },
       "goalLocation": {
         "x": 22,
-        "y": 6
+        "y": 5
+      },
+      "goalSize": {
+        "width": 1,
+        "height": 2
       },
       "mobs": [
         {
@@ -656,16 +677,23 @@
       "mapName": "map_2A",
       "next": "map_3A",
       "character": "playerSprite_b",
+      "onDeath": "respawn",
+      "isPlayerSlow": false,
       "hasTransition": false,
       "playerTransitionTime": "after",
       "playerTransitionMethod": "disappear",
+      "lingerTime": 0,
       "startLocation": {
         "x": 1,
         "y": 0
       },
       "goalLocation": {
         "x": 22,
-        "y": 6
+        "y": 5
+      },
+      "goalSize": {
+        "width": 1,
+        "height": 2
       },
       "mobs": [
         {
@@ -900,16 +928,23 @@
       "mapName": "map_3A",
       "next": "map_3B",
       "character": "playerSprite_a",
+      "onDeath": "respawn",
+      "isPlayerSlow": false,
       "hasTransition": true,
       "playerTransitionTime": "after",
       "playerTransitionMethod": "fall",
+      "lingerTime": 0,
       "startLocation": {
         "x": 1,
         "y": 0
       },
       "goalLocation": {
-        "x": 26.5,
-        "y": 18
+        "x": 26,
+        "y": 18.5
+      },
+      "goalSize": {
+        "width": 2,
+        "height": 1
       },
       "mobs": [
         {
@@ -1241,16 +1276,23 @@
       "mapName": "map_3A",
       "next": "map_4A",
       "character": "playerSprite_b",
+      "onDeath": "respawn",
+      "isPlayerSlow": false,
       "hasTransition": false,
       "playerTransitionTime": "after",
-      "playerTransitionMethod": "fall",
+      "playerTransitionMethod": "right",
+      "lingerTime": 0,
       "startLocation": {
         "x": 1,
         "y": 0
       },
       "goalLocation": {
-        "x": 29,
-        "y": 18
+        "x": 26,
+        "y": 18.5
+      },
+      "goalSize": {
+        "width": 2,
+        "height": 1
       },
       "mobs": [
         {
@@ -1478,6 +1520,162 @@
           },
           "active": true
         }
+      ]
+    },
+    {
+      "id": "map_4A",
+      "mapName": "map_4A",
+      "next": "map_5A",
+      "character": "playerSprite_b",
+      "onDeath": "respawn",
+      "isPlayerSlow": false,
+      "hasTransition": false,
+      "playerTransitionTime": "before",
+      "playerTransitionMethod": "fall",
+      "lingerTime": 0,
+      "startLocation": {
+        "x": 14,
+        "y": 0
+      },
+      "goalLocation": {
+        "x": 14,
+        "y": 19
+      },
+      "goalSize": {
+        "width": 2,
+        "height": 1
+      },
+      "mobs": [
+
+      ]
+    },
+    {
+      "id": "map_5A",
+      "mapName": "map_5A",
+      "next": "map_cutscene",
+      "character": "playerSprite_b",
+      "onDeath": "respawn",
+      "isPlayerSlow": false,
+      "hasTransition": false,
+      "playerTransitionTime": "before",
+      "playerTransitionMethod": "fall",
+      "lingerTime": 0,
+      "startLocation": {
+        "x": 14,
+        "y": 0
+      },
+      "goalLocation": {
+        "x": 14,
+        "y": 19
+      },
+      "goalSize": {
+        "width": 2,
+        "height": 1
+      },
+      "mobs": [
+        {
+          "id": "lava",
+          "position": {
+            "x": 10,
+            "y": 18
+          },
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": "map_cutscene",
+      "mapName": "map_cutscene",
+      "next": "map_5B",
+      "character": "playerSprite_b",
+      "onDeath": "respawn",
+      "isPlayerSlow": true,
+      "hasTransition": false,
+      "playerTransitionTime": "before",
+      "playerTransitionMethod": "mourn",
+      "lingerTime": 1000,
+      "startLocation": {
+        "x": 14,
+        "y": 0
+      },
+      "goalLocation": {
+        "x": 13,
+        "y": 0
+      },
+      "goalSize": {
+        "width": 4,
+        "height": 1
+      },
+      "mobs": [
+        {
+          "id": "corpse",
+          "position": {
+            "x": 15,
+            "y": 5
+          },
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": "map_5B",
+      "mapName": "map_5A",
+      "next": "map_4B",
+      "character": "playerSprite_b",
+      "onDeath": "badEnd",
+      "isPlayerSlow": true,
+      "hasTransition": false,
+      "playerTransitionTime": "before",
+      "playerTransitionMethod": "disappear",
+      "lingerTime": 0,
+      "startLocation": {
+        "x": 16,
+        "y": 18
+      },
+      "goalLocation": {
+        "x": 14,
+        "y": 0
+      },
+      "goalSize": {
+        "width": 2,
+        "height": 1
+      },
+      "mobs": [
+        {
+          "id": "lava",
+          "position": {
+            "x": 10,
+            "y": 18
+          },
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": "map_4B",
+      "mapName": "map_4A",
+      "next": "end",
+      "character": "playerSprite_b",
+      "onDeath": "badEnd",
+      "isPlayerSlow": true,
+      "hasTransition": false,
+      "playerTransitionTime": "before",
+      "playerTransitionMethod": "disappear",
+      "lingerTime": 0,
+      "startLocation": {
+        "x": 16,
+        "y": 18
+      },
+      "goalLocation": {
+        "x": 14,
+        "y": 0
+      },
+      "goalSize": {
+        "width": 2,
+        "height": 1
+      },
+      "mobs": [
+
       ]
     }
   ]

@@ -7,9 +7,12 @@ export interface IStageData {
   mapName: string,
   next: string,
   character: string,
+  onDeath: string,
+  isPlayerSlow: boolean, 
   hasTransition: boolean,
   playerTransitionTime: string,
   playerTransitionMethod: string,
+  lingerTime: number,
   startLocation: {
     x: number,
     y: number
@@ -17,6 +20,10 @@ export interface IStageData {
   goalLocation: {
     x: number,
     y: number
+  },
+  goalSize: {
+    width: number,
+    height: number
   },
   mobs: {
     "id": string,
@@ -48,9 +55,12 @@ function getDefaultStageData(): IStageData {
     mapName: "",
     next: "",
     character: "",
+    onDeath: "respawn",
+    isPlayerSlow: false,
     hasTransition: false,
     playerTransitionMethod: "disappear",
     playerTransitionTime: "before",
+    lingerTime: 0,
     startLocation: {
       x: 0,
       y: 0
@@ -58,6 +68,10 @@ function getDefaultStageData(): IStageData {
     goalLocation: {
       x: 0,
       y: 0
+    },
+    goalSize: {
+      width: 8,
+      height: 8
     },
     mobs: []
   }

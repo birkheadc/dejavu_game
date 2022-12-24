@@ -127,6 +127,35 @@
           "repeat": -1
         }
       ]
+    },
+    {
+      "id": "corpse",
+      "sprite": "corpseSprite",
+      "size": {
+        "x": 16,
+        "y": 16
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "isDangerous": false,
+      "isCollide": false,
+      "isRemoveAfterTransition": false,
+      "animations": [
+        {
+          "name": "active",
+          "frames": [ 0 ],
+          "frameRate": 1,
+          "repeat": -1
+        },
+        {
+          "name": "inactive",
+          "frames": [ 0 ],
+          "frameRate": 1,
+          "repeat": -1
+        }
+      ]
     }
   ]
 }

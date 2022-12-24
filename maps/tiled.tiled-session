@@ -47,10 +47,18 @@
         },
         "map_3A.tmj": {
             "scale": 1.9079166666666665,
-            "selectedLayer": 5,
+            "selectedLayer": 4,
             "viewCenter": {
                 "x": 239.52828128412318,
-                "y": 159.59816553832715
+                "y": 160.12229744485694
+            }
+        },
+        "map_4A.tmj": {
+            "scale": 1.9079166666666665,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 240.052413190653,
+                "y": 160.12229744485694
             }
         },
         "mininicular.tsx": {

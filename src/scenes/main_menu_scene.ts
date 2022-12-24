@@ -21,7 +21,7 @@ export default class MainMenuScene extends Phaser.Scene {
   getPlayButton() {
     const button = this.add.image(240, 160, 'play_button');
     button.setInteractive();
-    button.on('pointerdown', () => this.scene.start('GameScene', {stage: stages.getStageData(0) }));
+    button.on('pointerdown', () => this.scene.start('GameScene', {stage: stages.getStageData(10) }));
     return button;
   }
 

@@ -15,6 +15,9 @@ export default class GameScene extends Phaser.Scene {
   mobs: Mob[] = [];
 
   isComplete: boolean = false;
+
+  lingerTimer: number = 0;
+  isLingering: boolean = false;
   
   constructor() {
     super('GameScene');
@@ -23,6 +26,8 @@ export default class GameScene extends Phaser.Scene {
   init(data: {stage: IStageData }) {
     this.stage = data.stage;
     this.isComplete = false;
+    this.isLingering = false;
+    this.lingerTimer = 0;
   }
 
   preload() {
@@ -44,7 +49,8 @@ export default class GameScene extends Phaser.Scene {
       this,
       (this.stage.startLocation.x * 16) + 8,
       (this.stage.startLocation.y * 16) + 8,
-      this.stage.character
+      this.stage.character,
+      this.stage.isPlayerSlow
     );
     this.controller = new PlayerController(this, player);
     return player;
@@ -53,15 +59,23 @@ export default class GameScene extends Phaser.Scene {
   spawnGoal(): Phaser.GameObjects.Zone {
     const goal = new Phaser.GameObjects.Zone(
       this,
-      (this.stage.goalLocation.x * 16) + 8,
-      (this.stage.goalLocation.y * 16) + 8,
-      8,
-      8
+      (this.stage.goalLocation.x * 16) + ((this.stage.goalSize.width * 16) / 2),
+      (this.stage.goalLocation.y * 16) + ((this.stage.goalSize.height * 16) / 2),
+      this.stage.goalSize.width * 16,
+      this.stage.goalSize.height * 16
     );
+    // this.add.rectangle(
+    //   (this.stage.goalLocation.x * 16) + ((this.stage.goalSize.width * 16) / 2),
+    //   (this.stage.goalLocation.y * 16) + ((this.stage.goalSize.height * 16) / 2),
+    //   this.stage.goalSize.width * 16,
+    //   this.stage.goalSize.height * 16,
+    //   0xff0000
+    // );
     return goal;
   }
 
   makeTilemap(): Phaser.Tilemaps.Tilemap {
+    console.log('making tile map for: ', this.stage);
     const map = this.make.tilemap({key: this.stage.id});
     const groundTiles = map.addTilesetImage('mininicular', 'terrainSprite');
     map.createLayer('back', groundTiles, 0, 0);
@@ -102,10 +116,16 @@ export default class GameScene extends Phaser.Scene {
 
   die() {
     this.cameras.main.flash(500, 255, 0, 0, true);
-    this.respawnPlayer();
+    if (this.stage.onDeath === 'respawn') {
+      this.respawnPlayer();
+    }
+    else {
+      this.scene.start('EndScene', { ending: 'bad' });
+    }
   }
 
   respawnPlayer() {
+    this.player?.cancelJump();
     this.player?.setRandomPosition((this.stage.startLocation.x * 16) + 8, (this.stage.startLocation.y * 16) + 8, 0, 0);
   }
 
@@ -117,6 +137,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   endStage() {
+    if (this.isComplete === true) return; 
     this.isComplete = true;
     this.controller?.setUsable(false);
 
@@ -147,7 +168,10 @@ export default class GameScene extends Phaser.Scene {
       this.player?.setOffscreenCallback(callback);
     }
     else if (this.stage.playerTransitionMethod === 'fall') {
-      console.log('test');
+      this.player?.setOffscreenCallback(callback);
+    }
+    else if (this.stage.playerTransitionMethod === 'mourn') {
+      this.player?.mourn(() => this.controller?.setUsable(true));
       this.player?.setOffscreenCallback(callback);
     }
     else {
@@ -168,7 +192,6 @@ export default class GameScene extends Phaser.Scene {
               mob.destroy();
             }
             finished++;
-            console.log('Finished: ', finished, " Total: ", total);
             if (finished >= total) {
               callback();
             }
@@ -183,12 +206,31 @@ export default class GameScene extends Phaser.Scene {
   }
 
   goToNextStage() {
-    this.scene.restart({stage: stages.getNextStage(this.stage)});
+    if (this.stage.next === 'end') {
+      this.scene.start('EndScene', { ending: 'good' });
+    }
+    else if (this.stage.lingerTime === 0) {
+      this.scene.restart({stage: stages.getNextStage(this.stage)});
+    }
+    else {
+      this.player?.setAlpha(0);
+      this.lingerTimer = 0;
+      this.isLingering = true;
+    }
+  }
+
+  handleLinger(delta: any) {
+    if (this.isLingering === false) return;
+    this.lingerTimer += delta;
+    if (this.lingerTimer >= this.stage.lingerTime) {
+      this.scene.restart({stage: stages.getNextStage(this.stage)});
+    }
   }
 
   update(time: any, delta: any) {
     this.player?.update(time, delta);
     this.controller?.update(time, delta);
     this.handleGoalCheck();
+    this.handleLinger(delta);
   }
 }

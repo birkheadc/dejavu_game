@@ -7,24 +7,36 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
 
   animator: PlayerAnimator;
 
+  SLOW_MOVE_SPEED_X = 90;
   MOVE_SPEED_X = 150;
+  currentMoveSpeedX: number = this.MOVE_SPEED_X
   isFalling: boolean = false;
   isJumping: boolean = false;
   canJump: boolean = true;
 
+  isMourning: boolean = false;
+
   JUMP_FORCE = 45;
+  SLOW_JUMP_FORCE = 35;
+  currentJumpForce: number = this.JUMP_FORCE;
   MAX_JUMP_TIME = 300;
   jumpTime: number = 0;
 
   offscreenCallback: Function | null = null;
 
-  constructor(scene: Phaser.Scene, x: number, y: number, spriteId: string) {
+  constructor(scene: Phaser.Scene, x: number, y: number, spriteId: string, isSlow: boolean) {
     super(scene, x, y, spriteId);
     this.setScale(0.5);
-    this.animator = new PlayerAnimator(this, spriteId);
+    this.setPlayerSlow(isSlow);
+    this.animator = new PlayerAnimator(this, spriteId, isSlow);
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     this.animate('idle');
+  }
+
+  setPlayerSlow(isSlow: boolean) {
+    this.currentJumpForce = isSlow ? this.SLOW_JUMP_FORCE : this.JUMP_FORCE;
+    this.currentMoveSpeedX = isSlow ? this.SLOW_MOVE_SPEED_X : this.MOVE_SPEED_X;
   }
 
   setOffscreenCallback(callback: Function) {
@@ -50,11 +62,16 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
   }
 
   moveX(velocity: number) {
-    this.setVelocityX(velocity * this.MOVE_SPEED_X);
+    this.setVelocityX(velocity * this.currentMoveSpeedX);
   }
 
   jump() {
     if (this.isFalling === false && this.canJump === true) this.isJumping = true;
+    this.canJump = false;
+  }
+
+  cancelJump() {
+    this.stopJump();
     this.canJump = false;
   }
 
@@ -76,7 +93,7 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
       }
       this.jumpTime += delta;
       if (this.jumpTime < this.MAX_JUMP_TIME) {
-        this.setVelocityY(-1 * (this.JUMP_FORCE / ((this.jumpTime + 100) / 1000)));
+        this.setVelocityY(-1 * (this.currentJumpForce / ((this.jumpTime + 100) / 1000)));
       }
       else {
         this.isJumping = false;
@@ -96,6 +113,10 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
   }
 
   handleAnimation() {
+    if (this.isMourning === true) {
+      this.animate('mourn');
+      return;
+    }
     if (this.isFalling === true) {
       this.animate('jump');
       return;
@@ -109,15 +130,19 @@ export default class PlayerCharacter extends Physics.Arcade.Sprite {
 
   checkOffscreen() {
     if (this.offscreenCallback == null) return;
-    // console.log('offscreen callback exists, checking...');
     if (this.scene.cameras.main.worldView.contains(this.getBody().x, this.getBody().y) === false) {
-      console.log('this player is offscreen!');
       this.offscreenCallback();
       this.offscreenCallback = null;
     }
-    else {
-      console.log('player is on screen');
-    }
+  }
+
+  mourn(callback: Function) {
+    this.isMourning = true;
+    this.on('animationcomplete', () => {
+      this.isMourning = false;
+      callback();
+    });
+    this.animate('mourn');
   }
 
   update(time: any, delta: any) {
