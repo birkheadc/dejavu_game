@@ -3,7 +3,7 @@ import PlayerCharacter from "../player/playerCharacter/playerCharacter";
 import PlayerController from "../player/playerController/PlayerController";
 import stages, { IStageData } from "../assets/stages";
 import mobs, { IMobData } from "../assets/mobs";
-import Mob from "../Mob/mob";
+import Mob from "../mob/mob";
 
 export default class GameScene extends Phaser.Scene {
 
@@ -115,8 +115,8 @@ export default class GameScene extends Phaser.Scene {
   }
 
   die() {
-    this.cameras.main.flash(500, 255, 0, 0, true);
     if (this.stage.onDeath === 'respawn') {
+      this.cameras.main.flash(500, 155, 0, 0, false);
       this.respawnPlayer();
     }
     else {

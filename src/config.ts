@@ -5,7 +5,7 @@ const config: Phaser.Types.Core.GameConfig = {
   title: 'Dejavu',
   type: Phaser.AUTO,
   parent: 'game',
-  backgroundColor: '#666666',
+  backgroundColor: '#363636',
   scale: {
     width: 480,
     height: 320,
