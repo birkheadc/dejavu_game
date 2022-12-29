@@ -6,8 +6,8 @@ module.exports = {
   entry: './index.ts',
   mode: 'development',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'dejavu-game.js',
+    path: path.resolve(__dirname, 'dejavu'),
+    filename: 'index.js',
     globalObject: 'this',
     library: {
       name: 'dejavuGame',

@@ -3,8 +3,9 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "mininicular.tsx",
+    "activeFile": "map_1A/map_5A.tmx",
     "expandedProjectPaths": [
+        "map_1A",
         "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -53,7 +54,7 @@
         },
         "map_1A/map_5A.tmx": {
             "scale": 1.9079166666666665,
-            "selectedLayer": 1,
+            "selectedLayer": 3,
             "viewCenter": {
                 "x": 240.052413190653,
                 "y": 160.12229744485694
@@ -109,21 +110,24 @@
     "map.tileWidth": 16,
     "map.width": 30,
     "openFiles": [
-        "mininicular.tsx",
-        "map_1A.tmj",
-        "map_2A.tmj",
+        "map_5A.tmj",
+        "map_1A/map_5A.tmx",
+        "map_1A/map_4A.tmx",
+        "map_1A/map_3A.tmx",
         "map_3A.tmj",
-        "map_4A.tmj",
-        "map_5A.tmj"
+        "map_2A.tmj"
     ],
     "project": "tiled.tiled-project",
     "recentFiles": [
-        "mininicular.tsx",
-        "map_1A.tmj",
+        "map_5A.tmj",
         "map_2A.tmj",
         "map_3A.tmj",
+        "map_1A/map_3A.tmx",
+        "map_1A/map_4A.tmx",
+        "map_1A/map_5A.tmx",
+        "mininicular.tsx",
+        "map_1A.tmj",
         "map_4A.tmj",
-        "map_5A.tmj",
         "map_01.tmj"
     ],
     "tileset.embedInMap": true,
