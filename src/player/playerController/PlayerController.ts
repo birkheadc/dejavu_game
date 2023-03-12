@@ -4,18 +4,24 @@ import PlayerCharacter from '../playerCharacter/playerCharacter';
 export default class PlayerController extends Phaser.Input.InputPlugin {
   playerCharacter: PlayerCharacter;
   isUsable: boolean = true;
-  WKey: Phaser.Input.Keyboard.Key;
   AKey: Phaser.Input.Keyboard.Key;
-  SKey: Phaser.Input.Keyboard.Key;
   DKey: Phaser.Input.Keyboard.Key;
   SpaceKey: Phaser.Input.Keyboard.Key;
+
+  OverlayController: {
+    left: boolean,
+    right: boolean,
+    jump: boolean
+  } = {
+    left: false,
+    right: false,
+    jump: false
+  }
 
   constructor(scene: Phaser.Scene, playerCharacter: PlayerCharacter) {
     super(scene);
     this.playerCharacter = playerCharacter;
-    this.WKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.AKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-    this.SKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.DKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.SpaceKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
   }
@@ -27,10 +33,10 @@ export default class PlayerController extends Phaser.Input.InputPlugin {
 
   handleLeftRight() {
     if (this.isUsable === false) return;
-    if (this.AKey.isDown) {
+    if (this.AKey.isDown || this.OverlayController.left) {
       this.playerCharacter.moveX(-1);
     }
-    else if (this.DKey.isDown) {
+    else if (this.DKey.isDown || this.OverlayController.right) {
       this.playerCharacter.moveX(1);
     }
     else {
@@ -40,7 +46,7 @@ export default class PlayerController extends Phaser.Input.InputPlugin {
 
   handleJump() {
     if (this.isUsable === false) return;
-    if (this.SpaceKey.isDown) {
+    if (this.SpaceKey.isDown || this.OverlayController.jump) {
       this.playerCharacter.jump();
     }
     else {
