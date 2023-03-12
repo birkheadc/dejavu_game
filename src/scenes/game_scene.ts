@@ -4,6 +4,7 @@ import PlayerController from "../player/playerController/PlayerController";
 import stages, { IStageData } from "../assets/stages";
 import mobs, { IMobData } from "../assets/mobs";
 import Mob from "../mob/mob";
+import Overlay from "../overlay/overlay";
 
 export default class GameScene extends Phaser.Scene {
 
@@ -42,6 +43,12 @@ export default class GameScene extends Phaser.Scene {
     this.mobs = this.spawnMobs();
     this.controller?.setUsable(true);
     this.player?.setAlpha(1);
+    const overlay = this.getOverlay();
+  }
+
+  getOverlay() {
+    const overlay = new Overlay(this, null);
+    return overlay;
   }
 
   spawnPlayer(): PlayerCharacter {

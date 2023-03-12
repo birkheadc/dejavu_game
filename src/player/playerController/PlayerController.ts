@@ -58,4 +58,8 @@ export default class PlayerController extends Phaser.Input.InputPlugin {
     this.isUsable = isUsable;
     this.playerCharacter.moveX(0);
   }
+
+  setOverlayController(controller: { left: boolean, right: boolean, jump: boolean}) {
+    this.OverlayController = controller;
+  }
 }

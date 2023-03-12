@@ -8,6 +8,9 @@ import stages from "../assets/stages";
 import terrainSpriteSheet from '../assets/maps/mininicular.png';
 import mobs from "../assets/mobs";
 import PlayButton from "../playButton/playButton";
+import MaximizeButton from "../overlay/maximizeButton";
+import ShowControllerButton from "../overlay/showControllerButton";
+import Overlay from "../overlay/overlay";
 
 export default class MainMenuScene extends Phaser.Scene {
 
@@ -43,6 +46,11 @@ export default class MainMenuScene extends Phaser.Scene {
     return title;
   }
 
+  getOverlay() {
+    const overlay = new Overlay(this, null);
+    return overlay;
+  }
+
   preload() {
     this.load.image('title', title);
     this.load.spritesheet('play_button', playButtonImg, { frameWidth: 128, frameHeight: 64 });
@@ -57,6 +65,7 @@ export default class MainMenuScene extends Phaser.Scene {
   create() {
     const button = this.getPlayButton();
     const title = this.getTitle();
+    const overlay = this.getOverlay();
   }
 
   startGame() {
