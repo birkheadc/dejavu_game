@@ -10,8 +10,6 @@ export default class Overlay {
   maximizeButton: MaximizeButton;
   showControllerButton: ShowControllerButton;
 
-  isControllerShown: boolean = false;
-
   overlayController: OverlayController;
 
   constructor(scene: Phaser.Scene, controller: PlayerController | null) {
@@ -19,18 +17,20 @@ export default class Overlay {
     this.controller = controller;
     this.maximizeButton = this.createMaximizeButton();
     this.maximizeButton.setInteractive();
+    this.maximizeButton.setAlpha(0.25);
     this.showControllerButton = this.createShowControllerButton();
     this.showControllerButton.setInteractive();
+    this.showControllerButton.setAlpha(0.25);
     this.overlayController = this.createOverlayController();
   }
 
   createMaximizeButton(): MaximizeButton {
-    const x = this.scene.cameras.main.width - 25;
-    return new MaximizeButton(this.scene, x, 25, 'maximize_button', this.toggleScreenMax);
+    const x = this.scene.cameras.main.width - 32;
+    return new MaximizeButton(this.scene, x, 32, 'maximize_button', this.toggleScreenMax);
   }
 
   createShowControllerButton(): ShowControllerButton {
-    return new ShowControllerButton(this.scene, 25, 25, 'show_controller_button', this.toggleControllerShown);
+    return new ShowControllerButton(this.scene, 32, 32, 'show_controller_button', this.toggleControllerShown);
   }
 
   createOverlayController(): OverlayController {
@@ -42,8 +42,7 @@ export default class Overlay {
   }
 
   toggleControllerShown = () => {
-    this.isControllerShown = !this.isControllerShown;
-    console.log('show: ', this.isControllerShown);
+    this.overlayController.toggle();
   }
 
 }

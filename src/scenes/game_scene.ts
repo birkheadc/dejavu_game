@@ -36,6 +36,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
+    this.input.addPointer(3);
     this.map = this.makeTilemap();
     this.player = this.spawnPlayer();
     this.physics.add.collider(this.player, this.map.getLayer('ground').tilemapLayer);
@@ -47,7 +48,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   getOverlay() {
-    const overlay = new Overlay(this, null);
+    const overlay = new Overlay(this, this.controller);
     return overlay;
   }
 

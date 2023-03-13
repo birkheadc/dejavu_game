@@ -11,6 +11,7 @@ export default class MaximizeButton extends Physics.Arcade.Sprite {
     this.callback = callback;
     this.scene.add.existing(this);
     this.on('pointerup', this.onPointerDown);
+    this.setDepth(10);
   }
 
   onPointerDown() {
